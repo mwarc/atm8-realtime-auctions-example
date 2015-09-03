@@ -8,10 +8,10 @@ public class AuctionValidator {
 
     public static boolean isBidPossible(
         Auction auctionDatabase,
-        Auction auctionRequestBody
+        Auction auctionRequest
     ) {
         BigDecimal currentPrice = auctionDatabase.getPrice();
-        BigDecimal newPrice = auctionRequestBody.getPrice();
+        BigDecimal newPrice = auctionRequest.getPrice();
         return currentPrice.compareTo(newPrice) == -1;
     }
 }
