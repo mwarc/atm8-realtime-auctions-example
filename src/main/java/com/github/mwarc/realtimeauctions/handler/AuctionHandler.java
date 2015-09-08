@@ -1,15 +1,15 @@
 package com.github.mwarc.realtimeauctions.handler;
 
-import com.github.mwarc.realtimeauctions.utils.AuctionValidator;
 import com.github.mwarc.realtimeauctions.model.Auction;
 import com.github.mwarc.realtimeauctions.repository.AuctionRepository;
+import com.github.mwarc.realtimeauctions.utils.AuctionValidator;
+import io.vertx.core.json.Json;
 import io.vertx.ext.web.RoutingContext;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
 import static com.github.mwarc.realtimeauctions.model.Auction.defaultAuction;
-import static com.github.mwarc.realtimeauctions.utils.AuctionConverter.toJson;
 
 public class AuctionHandler {
 
@@ -27,7 +27,7 @@ public class AuctionHandler {
             context.response()
                 .putHeader("content-type", "application/json")
                 .setStatusCode(200)
-                .end(toJson(auction.get()));
+                .end(Json.encodePrettily(auction.get()));
         } else {
             context.response()
                 .putHeader("content-type", "application/json")
@@ -47,7 +47,7 @@ public class AuctionHandler {
 
         if (AuctionValidator.isBidPossible(auctionDatabase, auctionRequest)) {
             this.auctionRepository.save(auctionRequest);
-            context.vertx().eventBus().publish("auction." + auctionId, toJson(auctionRequest));
+            context.vertx().eventBus().publish("auction." + auctionId, Json.encodePrettily(auctionRequest));
 
             context.response()
                 .setStatusCode(200)
