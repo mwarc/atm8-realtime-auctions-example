@@ -71,3 +71,6 @@ crashlytics-build.properties
 
 # Vert.x
 .vertx
+
+# OS generated files
+.DS_Store
