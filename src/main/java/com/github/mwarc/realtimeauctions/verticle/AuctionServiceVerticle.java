@@ -3,6 +3,7 @@ package com.github.mwarc.realtimeauctions.verticle;
 
 import com.github.mwarc.realtimeauctions.handler.AuctionHandler;
 import com.github.mwarc.realtimeauctions.repository.AuctionRepository;
+import com.github.mwarc.realtimeauctions.validation.AuctionValidator;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
@@ -34,8 +35,9 @@ public class AuctionServiceVerticle extends AbstractVerticle {
     }
 
     private Router auctionApiRouter() {
-        AuctionRepository auctionRepository = new AuctionRepository(vertx.sharedData());
-        AuctionHandler auctionHandler = new AuctionHandler(auctionRepository);
+        AuctionRepository repository = new AuctionRepository(vertx.sharedData());
+        AuctionValidator validator = new AuctionValidator(repository);
+        AuctionHandler auctionHandler = new AuctionHandler(repository, validator);
 
         Router router = Router.router(vertx);
         router.route().handler(BodyHandler.create());
@@ -44,7 +46,7 @@ public class AuctionServiceVerticle extends AbstractVerticle {
         router.route().produces("application/json");
 
         router.get("/auctions/:id").handler(auctionHandler::handleGetAuction);
-        router.patch("/auctions/:id").handler(auctionHandler::handleChangeAuctionPrice);
+        router.patch("/auctions/:id").handler(auctionHandler::handleChangeAuction);
 
         return router;
     }

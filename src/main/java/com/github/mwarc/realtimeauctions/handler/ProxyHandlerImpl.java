@@ -20,8 +20,9 @@ public class ProxyHandlerImpl implements ProxyHandler {
 
     @Override
     public void handle(RoutingContext context) {
-        HttpClient client = context.vertx().createHttpClient();
         logger.info("Proxying request: " + context.request().uri());
+
+        HttpClient client = context.vertx().createHttpClient();
         HttpClientRequest clientRequest = client.request(context.request().method(), port, host, context.request().uri(), clientResult -> {
             context.request().response().setStatusCode(clientResult.statusCode());
             context.request().response().headers().setAll(clientResult.headers());
