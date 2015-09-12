@@ -15,12 +15,29 @@ a {
     &:hover { text-decoration: underline; }
 }
 
+.button {
+    color: #fff;
+    border: 1px solid @border-color;
+    background-color: #3c3c3c;
+    box-shadow: inset 0 1px 0 0 #7d7d7d;
+    text-shadow: 1px 1px 0 #000;
+    background: -moz-linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
+    background: -webkit-linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
+    background: -o-linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
+    background: -ms-linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
+    background: linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
+    padding: 11px 50px;
+    border-radius: @border-radius;
+
+    &:hover { text-decoration: none; }
+}
+
 div#message {
     margin: 0 auto;
     padding: 15px 0;
     text-align: center;
     color: @message-color;
-    width: 400px;
+    width: @message-box-width;
 
     &.error { background: @error-message; }
     &.success { background: @success-message; }
@@ -28,7 +45,7 @@ div#message {
 }
 
 .container {
-    width: 370px;
+    width: @container-width;
     padding: 0 10px;
     margin: 0 auto;
 
@@ -41,7 +58,7 @@ div#message {
 
     .offer {
         border: 1px solid @border-color;
-        border-radius: 10px;
+        border-radius: @border-radius;
         display: table;
         width: 100%;
 
@@ -91,21 +108,6 @@ div#message {
     .bid {
         text-align: center;
         padding: 10px 0;
-
-        .button {
-            color: #fff;
-            border: 1px solid #787878;
-            background-color: #3c3c3c;
-            box-shadow: inset 0 1px 0 0 #7d7d7d;
-            text-shadow: 1px 1px 0 #000;
-            background: -moz-linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
-            background: -webkit-linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
-            background: -o-linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
-            background: -ms-linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
-            background: linear-gradient(top, #7d7d7d 5%, #3c3c3c 100%);
-            padding: 11px 50px;
-            border-radius: 5px;
-        }
     }
 
 }
