@@ -74,3 +74,8 @@ crashlytics-build.properties
 
 # OS generated files
 .DS_Store
+
+# Frontend libs
+bower_components
+node_modules
+public/js/*.min.js
