@@ -78,4 +78,5 @@ crashlytics-build.properties
 # Frontend libs
 bower_components
 node_modules
-public/js/*.min.js
+public/scripts
+public/styles

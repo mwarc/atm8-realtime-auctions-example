@@ -4,29 +4,29 @@
     <meta charset="utf-8">
     <title>The best online auction site!</title>
 
-    <script src="/js/sockjs.min.js"></script>
-    <script src="/js/vertxbus.min.js"></script>
-    <script src="/js/realtime-auctions.js"></script>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body onload="init();">
 
-<h3>Auction 1</h3>
-<div id="message"></div>
-<form>
-    Current price:
-    <span id="current_price"></span>
-    <div>
-        <label for="my_bid_value">Your offer:</label>
-        <input id="my_bid_value" type="text">
-        <input type="button" onclick="bid();" value="Bid">
-    </div>
-    <div>
-        Feed:
-        <textarea id="feed" rows="4" cols="50" readonly></textarea>
-    </div>
-</form>
+    <h3>Auction 1</h3>
+    <div id="message"></div>
+    <form>
+        Current price:
+        <span id="current_price"></span>
+        <div>
+            <label for="my_bid_value">Your offer:</label>
+            <input id="my_bid_value" type="text">
+            <input type="button" onclick="bid();" value="Bid">
+        </div>
+        <div>
+            Feed:
+            <textarea id="feed" rows="4" cols="50" readonly></textarea>
+        </div>
+    </form>
 
+    <script src="/scripts/sockjs.min.js"></script>
+    <script src="/scripts/vertxbus.min.js"></script>
+    <script src="/scripts/realtime-auctions.js"></script>
 </body>
-
 </html>
