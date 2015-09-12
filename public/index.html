@@ -8,23 +8,36 @@
 </head>
 
 <body onload="init();">
-
-    <h3>Auction 1</h3>
-
-    <div>
-        Current price:
-        <span id="current_price"></span>
-        <a href="private/prebid.html" class="button">Bid</a>
+    <div id="message" class="error">
+        Ktoś Cię właśnie przelicytował
     </div>
 
-    <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Vestibulum et orci accumsan, maximus leo eget, condimentum enim.
-        Integer at interdum mi, vel vehicula velit.
-        Donec ultrices accumsan luctus. Sed tincidunt sed eros nec elementum.
-        Etiam aliquet, lectus eu suscipit fermentum, eros nulla cursus arcu, non accumsan massa nisl sed augue.
-        Morbi dapibus, odio ac scelerisque scelerisque, augue risus eleifend sapien, sed maximus diam justo non sem.
-        Donec facilisis pellentesque sem at porttitor. Nulla facilisi.
+    <div class="container">
+        <div class="timer">00:01:40</div>
+
+        <h1>Samsung Galaxy S6 nowy okazja licytacja</h1>
+
+        <div class="offer">
+            <div class="photo">
+                <img src="http://img15.allegroimg.pl/photos/128x96/56/62/68/65/5662686510" alt="">
+            </div>
+            <div class="info">
+                <span class="price-label">aktualna cena</span>
+                <span id="current_price">800 zł</span>
+                <span class="delivery">wysyłka gratis</span>
+            </div>
+        </div>
+
+        <div class="offer-info">
+            <strong>Opis przedmiotu</strong>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Vestibulum et orci accumsan, maximus leo eget, condimentum enim.
+            Integer at interdum mi, vel vehicula velit.
+        </div>
+
+        <div class="bid">
+            <a href="private/prebid.html" class="button">Bid</a>
+        </div>
     </div>
 
     <script src="/scripts/sockjs.min.js"></script>
