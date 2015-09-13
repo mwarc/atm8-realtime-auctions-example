@@ -7,13 +7,21 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         copy: {
-            libs: {
+            sockjs: {
                 src: 'bower_components/sockjs-client/dist/sockjs-0.3.4.min.js',
                 dest: 'public/scripts/sockjs.min.js'
             },
-            scripts: {
-                src: 'src/main/resources/scripts/realtime-auctions.js',
-                dest: 'public/scripts/realtime-auctions.js'
+            angular: {
+                src: 'bower_components/angular/angular.min.js',
+                dest: 'public/scripts/angular.min.js'
+            },
+            main: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/main/resources/scripts/',
+                    src: '**/*.{html,js}',
+                    dest: 'public/scripts/'
+                }]
             }
         },
         uglify: {
@@ -33,6 +41,10 @@ module.exports = function(grunt) {
             styles: {
                 files: ['src/main/resources/styles/**/*.less'],
                 tasks: ['less:main']
+            },
+            scripts: {
+                files: ['src/main/resources/scripts/**/*.{html,js}'],
+                tasks: ['copy:main']
             }
         }
     });
