@@ -19,16 +19,16 @@
             </div>
             <div class="info">
                 <span class="price-label">aktualna cena</span>
-                <span class="current-price" ng-bind="currentPrice"></span>
+                <span class="current-price">{{currentPrice | currency}}</span>
                 <span class="delivery">wysyłka gratis</span>
             </div>
         </div>
 
         <div class="offer-info">
             <strong>Opis przedmiotu</strong>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Vestibulum et orci accumsan, maximus leo eget, condimentum enim.
-            Integer at interdum mi, vel vehicula velit.
+            Samsung Galaxy S6 to dzieło powstałe z połączenia szkła i metalu.
+            Wyraź siebie delikatnymi i pięknymi zaokrągleniami oraz lśniącym szkłem,
+            mieniącym się feerią barw.
         </div>
 
         <div class="bid">
@@ -37,6 +37,7 @@
     </div>
 
     <script src="/scripts/angular.min.js"></script>
+    <script src="/scripts/angular-locale_pl-pl.min.js"></script>
     <script src="/scripts/sockjs.min.js"></script>
     <script src="/scripts/vertxbus.min.js"></script>
     <script src="/scripts/app.js"></script>

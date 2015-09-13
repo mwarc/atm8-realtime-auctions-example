@@ -18,7 +18,7 @@ form.bid {
         margin: 10px 0 0;
     }
 
-    input[type='text'] {
+    input[type='number'] {
         border: 1px solid @border-color;
         border-radius: @border-radius;
         padding: 10px;
@@ -29,7 +29,7 @@ form.bid {
     }
 
     p {
-        color: @agreement-color;
+        color: @disabled-color;
         font-size: 11px;
     }
 
@@ -51,13 +51,18 @@ form.bid {
     .change-price {
         cursor: pointer;
         background: #fff;
-        border: 3px solid #2285e3;
+        border: 3px solid @link-color;
         border-radius: 50%;
         width: 56px;
         height: 56px;
         display: inline-block;
         margin: 0 10px;
-        color: #2285e3;
+        color: @link-color;
         font-size: 30px;
+
+        &:disabled {
+            border: 3px solid @disabled-color;
+            color: @disabled-color;
+        }
     }
 }

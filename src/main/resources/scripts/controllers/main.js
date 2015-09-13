@@ -1,6 +1,7 @@
 angular.module('bidding').controller('main', ['$scope', '$http', function ($scope, $http) {
 
     $scope.auctionId = 1;
+    $scope.bidStep = 1.00;
 
     var prepareEndingTime = function (endingTimeObj) {
         return endingTimeObj.dayOfMonth + '.'
@@ -22,7 +23,7 @@ angular.module('bidding').controller('main', ['$scope', '$http', function ($scop
     $http(requestParams).then(
         function (responseData) {
             $scope.endingTime = prepareEndingTime(responseData.data.endingTime);
-            $scope.currentPrice = responseData.data.price; //ToDo: format price
+            $scope.currentPrice = responseData.data.price;
         },
         function (error) {
             throw new Error('Failed to load current auction price: ' + error.statusText);
