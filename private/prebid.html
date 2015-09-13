@@ -8,22 +8,44 @@
 </head>
 
 <body onload="init();">
+    <div id="message" class="error"></div>
 
-    <h3>Auction 1</h3>
-    <div id="message"></div>
-    <form>
-        Current price:
-        <span id="current_price"></span>
-        <div>
-            <label for="my_bid_value">Your offer:</label>
-            <input id="my_bid_value" type="text">
-            <input type="button" onclick="bid();" value="Bid">
+    <div class="container">
+        <div class="timer">00:01:40</div>
+
+        <h1>Samsung Galaxy S6 nowy okazja licytacja</h1>
+
+        <div class="offer">
+            <div class="photo">
+                <img src="http://img15.allegroimg.pl/photos/128x96/56/62/68/65/5662686510" alt="">
+            </div>
+            <div class="info">
+                <span class="price-label">aktualna cena</span>
+                <span id="current_price"></span>
+                <span class="delivery">wysyłka gratis</span>
+            </div>
         </div>
-        <div>
-            Feed:
+
+        <form class="bid">
+            <label for="my_bid_value">Twoja oferta</label>
+
+            <button class="change-price">-</button>
+            <input id="my_bid_value" type="text"> zł
+            <button class="change-price">+</button>
+
+            <p>
+                Pamiętaj, że złożenie oferty oznacza zawarcie prawnie wiążącej umowy
+                i zobowiązanie do zapłaty za wygrany przedmiot.
+            </p>
+
+            <input type="button" onclick="bid();" value="licytuj" class="button">
+        </form>
+
+        <h3>Przebieg licytacji</h3>
+        <div class="feed">
             <textarea id="feed" rows="4" cols="50" readonly></textarea>
         </div>
-    </form>
+    </div>
 
     <script src="/scripts/sockjs.min.js"></script>
     <script src="/scripts/vertxbus.min.js"></script>

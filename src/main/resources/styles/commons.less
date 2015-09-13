@@ -7,6 +7,7 @@ body {
 }
 
 h1 { font-size: 18px; }
+h3 { font-size: 14px; }
 
 a {
     color: @link-color;
@@ -16,6 +17,7 @@ a {
 }
 
 .button {
+    cursor: pointer;
     color: #fff;
     border: 1px solid @border-color;
     background-color: #3c3c3c;
@@ -30,18 +32,6 @@ a {
     border-radius: @border-radius;
 
     &:hover { text-decoration: none; }
-}
-
-div#message {
-    margin: 0 auto;
-    padding: 15px 0;
-    text-align: center;
-    color: @message-color;
-    width: @message-box-width;
-
-    &.error { background: @error-message; }
-    &.success { background: @success-message; }
-    &.info { background: @info-message; }
 }
 
 .container {
@@ -95,19 +85,4 @@ div#message {
             }
         }
     }
-
-    .offer-info {
-        margin: 20px 0;
-
-        strong {
-            display: block;
-            margin-bottom: 5px;
-        }
-    }
-
-    .bid {
-        text-align: center;
-        padding: 10px 0;
-    }
-
 }
