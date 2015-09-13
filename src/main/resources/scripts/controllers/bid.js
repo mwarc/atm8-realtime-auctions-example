@@ -31,11 +31,9 @@ angular.module('bidding').controller('bid', ['$scope', '$http', function ($scope
         };
 
         $http(requestParams).then(
-            function (data) {
-                //ToDo: update message?
-            },
+            function () {},
             function (error) {
-                //ToDo: update message
+                $scope.setMessage({status: 'error', text: error.statusText});
                 throw new Error('Bidding failed: ' + error.statusText);
             }
         );

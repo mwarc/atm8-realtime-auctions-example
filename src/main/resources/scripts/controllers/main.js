@@ -1,7 +1,15 @@
-angular.module('bidding').controller('main', ['$scope', '$http', function ($scope, $http) {
+angular.module('bidding').controller('main', ['$scope', '$timeout', '$http', function ($scope, $timeout, $http) {
 
     $scope.auctionId = 1;
     $scope.bidStep = 1.00;
+
+    $scope.setMessage = function (message) {
+        $scope.message = message;
+
+        $timeout(function () {
+            $scope.message = {};
+        }, 3000);
+    };
 
     var prepareEndingTime = function (endingTimeObj) {
         return endingTimeObj.dayOfMonth + '.'
@@ -35,10 +43,10 @@ angular.module('bidding').controller('main', ['$scope', '$http', function ($scop
     eventBus.onopen = function () {
         eventBus.registerHandler('auction.' + $scope.auctionId, function (message) {
             $scope.currentPrice = JSON.parse(message).price;
+            $scope.setMessage({status: 'success', text: "New offer in auction!"});
 
-            //ToDo: update feed and message
+            //ToDo: update feed
             //feed += JSON.parse(message).buyer + ' offer: EUR ' + JSON.parse(message).price + '\n';
-            //message = 'New offer in auction!';
         });
     }
 

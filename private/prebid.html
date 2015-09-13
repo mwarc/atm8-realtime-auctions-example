@@ -8,7 +8,7 @@
 </head>
 
 <body ng-app="bidding" ng-controller="main">
-    <div id="message" class="error"></div>
+    <div class="message {{message.status}}">{{message.text}}</div>
 
     <div class="container">
         <timer class="timer"></timer>
