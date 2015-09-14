@@ -41,7 +41,7 @@ public class AuctionHandler {
         Auction auctionRequest = new Auction(
             auctionId,
             new BigDecimal(context.getBodyAsJson().getString("price")),
-            context.user().principal().getString("sub"),
+            "Emmett Brown",
             null
         );
 
