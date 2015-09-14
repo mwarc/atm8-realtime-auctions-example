@@ -10,14 +10,6 @@ public class MainVerticle extends AbstractVerticle {
 
     @Override
     public void start() {
-        vertx.deployVerticle("com.github.mwarc.realtimeauctions.verticle.SockJSBridgeVerticle", res -> {
-            if (res.succeeded()) {
-                logger.info("SockJSBridgeVerticle deployment id is: " + res.result());
-            } else {
-                logger.error("SockJSBridgeVerticle deployment failed!");
-            }
-        });
-
         vertx.deployVerticle("com.github.mwarc.realtimeauctions.verticle.AuctionServiceVerticle", res -> {
             if (res.succeeded()) {
                 logger.info("AuctionServiceVerticle deployment id is: " + res.result());

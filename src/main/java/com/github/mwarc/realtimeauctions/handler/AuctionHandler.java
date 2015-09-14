@@ -47,7 +47,6 @@ public class AuctionHandler {
 
         if (validator.validate(auctionRequest)) {
             this.repository.updatePriceAndBuyer(auctionRequest);
-            context.vertx().eventBus().publish("auction." + auctionId, Json.encodePrettily(auctionRequest));
 
             context.response()
                 .setStatusCode(200)
