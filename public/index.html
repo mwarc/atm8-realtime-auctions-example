@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 
-<body ng-app="bidding" ng-controller="main">
+<body>
     <div class="container">
-        <div class="timer" ng-controller="timer">{{timeToEnd | date:'HH:mm:ss'}}</div>
+        <div class="timer">00:03:00</div>
 
         <h1>Samsung Galaxy S6 nowy okazja licytacja</h1>
 
@@ -19,7 +19,7 @@
             </div>
             <div class="info">
                 <span class="price-label">aktualna cena</span>
-                <span class="current-price">{{currentPrice | currency}}</span>
+                <span class="current-price">12,00 zł</span>
                 <span class="delivery">wysyłka gratis</span>
             </div>
         </div>
@@ -35,14 +35,5 @@
             <a href="/private/prebid.html" class="button">Bid</a>
         </div>
     </div>
-
-    <script src="/scripts/angular.min.js"></script>
-    <script src="/scripts/angular-locale_pl-pl.min.js"></script>
-    <script src="/scripts/sockjs.min.js"></script>
-    <script src="/scripts/vertxbus.min.js"></script>
-    <script src="/scripts/app.js"></script>
-    <script src="/scripts/controllers/main.js"></script>
-    <script src="/scripts/controllers/timer.js"></script>
-
 </body>
 </html>
