@@ -16,7 +16,6 @@ dependencies {
     compile "io.vertx:vertx-web:3.0.0"
     compile "io.vertx:vertx-auth-shiro:3.0.0"
     compile "io.vertx:vertx-auth-jwt:3.0.0"
-    compile 'ch.qos.logback:logback-classic:1.1.3'
 }
 
 def mainVerticle = "java:com.github.mwarc.realtimeauctions.verticle.MainVerticle"

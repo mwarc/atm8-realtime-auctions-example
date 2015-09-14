@@ -4,31 +4,45 @@
     <meta charset="utf-8">
     <title>The best online auction site!</title>
 
-    <script src="http://cdn.sockjs.org/sockjs-0.3.4.min.js"></script>
-    <script src="/js/vertxbus-3.0.0.js"></script>
-    <script src="/js/realtime-auctions.js"></script>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 
-<body onload="init();">
+<body ng-app="bidding" ng-controller="main">
+    <div class="container">
+        <div class="timer" ng-controller="timer">{{timeToEnd | date:'HH:mm:ss'}}</div>
 
-<h3>Auction 1</h3>
+        <h1>Samsung Galaxy S6 nowy okazja licytacja</h1>
 
-<div>
-    Current price:
-    <span id="current_price"></span>
-    <a href="private/prebid.html" class="button">Bid</a>
-</div>
+        <div class="offer">
+            <div class="photo">
+                <img src="/images/5662686510.jpeg" alt="">
+            </div>
+            <div class="info">
+                <span class="price-label">aktualna cena</span>
+                <span class="current-price">{{currentPrice | currency}}</span>
+                <span class="delivery">wysyłka gratis</span>
+            </div>
+        </div>
 
-<div>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Vestibulum et orci accumsan, maximus leo eget, condimentum enim.
-    Integer at interdum mi, vel vehicula velit.
-    Donec ultrices accumsan luctus. Sed tincidunt sed eros nec elementum.
-    Etiam aliquet, lectus eu suscipit fermentum, eros nulla cursus arcu, non accumsan massa nisl sed augue.
-    Morbi dapibus, odio ac scelerisque scelerisque, augue risus eleifend sapien, sed maximus diam justo non sem.
-    Donec facilisis pellentesque sem at porttitor. Nulla facilisi.
-</div>
+        <div class="offer-info">
+            <strong>Opis przedmiotu</strong>
+            Samsung Galaxy S6 to dzieło powstałe z połączenia szkła i metalu.
+            Wyraź siebie delikatnymi i pięknymi zaokrągleniami oraz lśniącym szkłem,
+            mieniącym się feerią barw.
+        </div>
+
+        <div class="bid">
+            <a href="/private/prebid.html" class="button">Bid</a>
+        </div>
+    </div>
+
+    <script src="/scripts/angular.min.js"></script>
+    <script src="/scripts/angular-locale_pl-pl.min.js"></script>
+    <script src="/scripts/sockjs.min.js"></script>
+    <script src="/scripts/vertxbus.min.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/controllers/main.js"></script>
+    <script src="/scripts/controllers/timer.js"></script>
 
 </body>
-
 </html>

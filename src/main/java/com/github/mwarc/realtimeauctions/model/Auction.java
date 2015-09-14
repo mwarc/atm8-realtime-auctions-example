@@ -18,13 +18,8 @@ public class Auction {
         this.endingTime = endingTime;
     }
 
-    public static Auction defaultAuction(String auctionId) {
-        return new Auction(
-            auctionId,
-            BigDecimal.ZERO,
-            null,
-            ZonedDateTime.now(ZoneOffset.UTC).plusMinutes(3)
-        );
+    public Auction(String id) {
+        this(id, BigDecimal.ZERO, "", ZonedDateTime.now(ZoneOffset.UTC).plusMinutes(3));
     }
 
     public String getId() {

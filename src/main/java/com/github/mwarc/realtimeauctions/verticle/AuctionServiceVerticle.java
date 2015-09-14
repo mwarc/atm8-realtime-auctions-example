@@ -45,6 +45,7 @@ public class AuctionServiceVerticle extends AbstractVerticle {
         router.route().consumes("application/json");
         router.route().produces("application/json");
 
+        router.route("/auctions/:id").handler(auctionHandler::initAuctionInSharedData);
         router.get("/auctions/:id").handler(auctionHandler::handleGetAuction);
         router.patch("/auctions/:id").handler(auctionHandler::handleChangeAuction);
 

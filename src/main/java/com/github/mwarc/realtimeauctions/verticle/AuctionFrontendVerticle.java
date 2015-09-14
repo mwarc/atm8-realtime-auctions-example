@@ -30,9 +30,7 @@ public class AuctionFrontendVerticle extends AbstractVerticle {
         router.route().handler(UserSessionHandler.create(authProvider));
         router.route("/private/*").handler(RedirectAuthHandler.create(authProvider, "/login.html"));
 
-        router.route("/login").handler(BodyHandler.create());
-        router.route("/login").handler(FormLoginWithTokenHandler.create(authProvider));
-
+        router.mountSubRouter("/tokens", tokenRouter(authProvider));
         router.mountSubRouter("/api", auctionApiRouter());
 
         router.route().failureHandler(ErrorHandler.create(true));
@@ -40,6 +38,15 @@ public class AuctionFrontendVerticle extends AbstractVerticle {
         router.route().handler(staticHandler("public"));
 
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+    }
+
+    private Router tokenRouter(AuthProvider authProvider) {
+        Router router = Router.router(vertx);
+
+        router.post().handler(BodyHandler.create());
+        router.post().handler(FormLoginWithTokenHandler.create(authProvider));
+
+        return router;
     }
 
     private Router auctionApiRouter() {

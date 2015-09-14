@@ -8,8 +8,6 @@ import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Optional;
 
-import static com.github.mwarc.realtimeauctions.model.Auction.defaultAuction;
-
 public class AuctionRepository {
 
     private SharedData sharedData;
@@ -26,17 +24,20 @@ public class AuctionRepository {
         return Optional.of(auctionSharedData).map(this::convertToAuction);
     }
 
-    public Auction getByIdOrDefault(String auctionId) {
-        return this.getById(auctionId).orElse(defaultAuction(auctionId));
-    }
-
-    public void save(Auction auction) {
+    public void insert(Auction auction) {
         LocalMap<String, String> auctionSharedData = this.sharedData.getLocalMap(auction.getId());
 
         auctionSharedData.put("id", auction.getId());
         auctionSharedData.put("price", auction.getPrice().toString());
         auctionSharedData.put("buyer", auction.getBuyer());
         auctionSharedData.put("endingTime", auction.getEndingTime().toString());
+    }
+
+    public void updatePriceAndBuyer(Auction auction) {
+        LocalMap<String, String> auctionSharedData = this.sharedData.getLocalMap(auction.getId());
+
+        auctionSharedData.put("price", auction.getPrice().toString());
+        auctionSharedData.put("buyer", auction.getBuyer());
     }
 
     private Auction convertToAuction(LocalMap<String, String> auction) {

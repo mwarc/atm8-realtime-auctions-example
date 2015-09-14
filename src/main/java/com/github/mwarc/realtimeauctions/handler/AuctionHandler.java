@@ -21,8 +21,8 @@ public class AuctionHandler {
 
     public void handleGetAuction(RoutingContext context) {
         String auctionId = context.request().getParam("id");
-        Optional<Auction> auction = this.repository.getById(auctionId);
 
+        Optional<Auction> auction = this.repository.getById(auctionId);
         if (auction.isPresent()) {
             context.response()
                 .putHeader("content-type", "application/json")
@@ -42,11 +42,11 @@ public class AuctionHandler {
             auctionId,
             new BigDecimal(context.getBodyAsJson().getString("price")),
             context.user().principal().getString("sub"),
-            repository.getByIdOrDefault(auctionId).getEndingTime()
+            null
         );
 
         if (validator.validate(auctionRequest)) {
-            this.repository.save(auctionRequest);
+            this.repository.updatePriceAndBuyer(auctionRequest);
             context.vertx().eventBus().publish("auction." + auctionId, Json.encodePrettily(auctionRequest));
 
             context.response()
@@ -57,5 +57,16 @@ public class AuctionHandler {
                 .setStatusCode(422)
                 .end();
         }
+    }
+
+    public void initAuctionInSharedData(RoutingContext context) {
+        String auctionId = context.request().getParam("id");
+
+        Optional<Auction> auction = this.repository.getById(auctionId);
+        if(!auction.isPresent()) {
+            this.repository.insert(new Auction(auctionId));
+        }
+
+        context.next();
     }
 }

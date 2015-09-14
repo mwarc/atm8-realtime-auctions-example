@@ -1,5 +1,6 @@
 package com.github.mwarc.realtimeauctions.validation;
 
+import com.github.mwarc.realtimeauctions.exception.AuctionNotFoundException;
 import com.github.mwarc.realtimeauctions.model.Auction;
 import com.github.mwarc.realtimeauctions.repository.AuctionRepository;
 
@@ -13,7 +14,9 @@ public class AuctionPriceValidator implements Validator {
 
     @Override
     public boolean validate(Auction auction) {
-        Auction auctionDatabase = repository.getByIdOrDefault(auction.getId());
+        Auction auctionDatabase = repository.getById(auction.getId())
+            .orElseThrow(() -> new AuctionNotFoundException(auction.getId()));
+
         return auctionDatabase.getPrice().compareTo(auction.getPrice()) == -1;
     }
 }
