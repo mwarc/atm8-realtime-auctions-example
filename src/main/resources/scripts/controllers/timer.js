@@ -1,7 +1,8 @@
 angular.module('bidding').controller('timer', ['$scope', '$interval', function ($scope, $interval) {
 
     var toUTCDate = function (date) {
-        return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+        return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+            date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
     };
 
     var prepareTimeToEnd = function (endingTimeObj) {
