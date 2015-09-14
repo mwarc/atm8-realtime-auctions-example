@@ -5,12 +5,8 @@ import com.github.mwarc.realtimeauctions.handler.AuctionHandler;
 import com.github.mwarc.realtimeauctions.repository.AuctionRepository;
 import com.github.mwarc.realtimeauctions.validation.AuctionValidator;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.http.HttpMethod;
-import io.vertx.core.json.JsonObject;
-import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
-import io.vertx.ext.web.handler.JWTAuthHandler;
 
 public class AuctionServiceVerticle extends AbstractVerticle {
 
@@ -18,20 +14,9 @@ public class AuctionServiceVerticle extends AbstractVerticle {
     public void start() {
         Router router = Router.router(vertx);
 
-        router.route(HttpMethod.PATCH, "/api/*").handler(jwtAuthHandler());
         router.mountSubRouter("/api", auctionApiRouter());
 
         vertx.createHttpServer().requestHandler(router::accept).listen(8081);
-    }
-
-    private JWTAuthHandler jwtAuthHandler() {
-        JsonObject authConfig = new JsonObject().put("keyStore", new JsonObject()
-            .put("type", "jceks")
-            .put("path", "keystore.jceks")
-            .put("password", "secret"));
-        JWTAuth authProvider = JWTAuth.create(vertx, authConfig);
-
-        return JWTAuthHandler.create(authProvider);
     }
 
     private Router auctionApiRouter() {

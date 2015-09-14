@@ -30,7 +30,6 @@ public class ProxyHandlerImpl implements ProxyHandler {
             clientResult.endHandler((v) -> context.request().response().end());
         });
         clientRequest.headers().setAll(context.request().headers());
-        clientRequest.putHeader("Authorization", "Bearer " + context.session().get("token"));
         context.request().handler(clientRequest::write);
         context.request().endHandler((v) -> clientRequest.end());
     }
