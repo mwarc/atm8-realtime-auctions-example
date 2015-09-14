@@ -6,7 +6,6 @@ import com.github.mwarc.realtimeauctions.validation.Validator;
 import io.vertx.core.json.Json;
 import io.vertx.ext.web.RoutingContext;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 
 public class AuctionHandler {
@@ -37,26 +36,7 @@ public class AuctionHandler {
     }
 
     public void handleChangeAuction(RoutingContext context) {
-        String auctionId = context.request().getParam("id");
-        Auction auctionRequest = new Auction(
-            auctionId,
-            new BigDecimal(context.getBodyAsJson().getString("price")),
-            context.user().principal().getString("sub"),
-            null
-        );
 
-        if (validator.validate(auctionRequest)) {
-            this.repository.updatePriceAndBuyer(auctionRequest);
-            context.vertx().eventBus().publish("auction." + auctionId, Json.encodePrettily(auctionRequest));
-
-            context.response()
-                .setStatusCode(200)
-                .end();
-        } else {
-            context.response()
-                .setStatusCode(422)
-                .end();
-        }
     }
 
     public void initAuctionInSharedData(RoutingContext context) {
