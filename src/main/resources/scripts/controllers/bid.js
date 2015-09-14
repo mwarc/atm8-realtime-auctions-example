@@ -26,7 +26,7 @@ angular.module('bidding').controller('bid', ['$scope', '$http', function ($scope
                 'Content-Type': 'application/json'
             },
             data: {
-                price: $scope.bidPrice
+                price: $scope.bidPrice.toFixed(2)
             }
         };
 

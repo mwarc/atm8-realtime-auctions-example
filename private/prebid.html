@@ -42,9 +42,20 @@
         </form>
 
         <h3>Przebieg licytacji</h3>
-        <div class="feed">
-            <textarea id="feed" rows="4" cols="50" readonly></textarea>
-        </div>
+        <table class="feed">
+            <thead>
+                <tr>
+                    <th>użytkownik</th>
+                    <th>data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="feed in feeds">
+                    <td>{{$index + 1}}. {{feed.buyer}}</td>
+                    <td>{{feed.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script src="/scripts/angular.min.js"></script>

@@ -2,6 +2,7 @@ angular.module('bidding').controller('main', ['$scope', '$timeout', '$http', fun
 
     $scope.auctionId = 1;
     $scope.bidStep = 1.00;
+    $scope.feeds = [];
 
     $scope.setMessage = function (message) {
         $scope.message = message;
@@ -42,11 +43,12 @@ angular.module('bidding').controller('main', ['$scope', '$timeout', '$http', fun
 
     eventBus.onopen = function () {
         eventBus.registerHandler('auction.' + $scope.auctionId, function (message) {
-            $scope.currentPrice = JSON.parse(message).price;
-            $scope.setMessage({status: 'success', text: "New offer in auction!"});
+            var message = JSON.parse(message);
 
-            //ToDo: update feed
-            //feed += JSON.parse(message).buyer + ' offer: EUR ' + JSON.parse(message).price + '\n';
+            angular.extend(message, {time: new Date()});
+            $scope.currentPrice = message.price;
+            $scope.feeds.push(message);
+            $scope.setMessage({status: 'success', text: "New offer in auction!"});
         });
     }
 
