@@ -12,15 +12,6 @@ angular.module('bidding').controller('main', ['$scope', '$timeout', '$http', fun
         }, 3000);
     };
 
-    var prepareEndingTime = function (endingTimeObj) {
-        return endingTimeObj.dayOfMonth + '.'
-            + endingTimeObj.monthValue + '.'
-            + endingTimeObj.year + ' '
-            + endingTimeObj.hour + ':'
-            + endingTimeObj.minute + ':'
-            + endingTimeObj.second;
-    };
-
     var requestParams = {
         method: 'GET',
         url: 'http://localhost:8080/api/auctions/' + $scope.auctionId,
@@ -31,7 +22,7 @@ angular.module('bidding').controller('main', ['$scope', '$timeout', '$http', fun
 
     $http(requestParams).then(
         function (responseData) {
-            $scope.endingTime = prepareEndingTime(responseData.data.endingTime);
+            $scope.endingTime = responseData.data.endingTime;
             $scope.currentPrice = responseData.data.price;
         },
         function (error) {
@@ -48,7 +39,7 @@ angular.module('bidding').controller('main', ['$scope', '$timeout', '$http', fun
             angular.extend(message, {time: new Date()});
             $scope.currentPrice = message.price;
             $scope.feeds.push(message);
-            $scope.setMessage({status: 'success', text: "New offer in auction!"});
+            $scope.setMessage({status: 'success', text: "Oferta zmieniła swoją cenę"});
         });
     }
 

@@ -9,7 +9,7 @@
 
 <body ng-app="bidding" ng-controller="main">
     <div class="container">
-        <timer class="timer"></timer>
+        <div class="timer" ng-controller="timer">{{timeToEnd | date:'HH:mm:ss'}}</div>
 
         <h1>Samsung Galaxy S6 nowy okazja licytacja</h1>
 
@@ -42,7 +42,7 @@
     <script src="/scripts/vertxbus.min.js"></script>
     <script src="/scripts/app.js"></script>
     <script src="/scripts/controllers/main.js"></script>
-    <script src="/scripts/directives/timer.js"></script>
+    <script src="/scripts/controllers/timer.js"></script>
 
 </body>
 </html>

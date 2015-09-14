@@ -11,7 +11,7 @@
     <div class="message {{message.status}}">{{message.text}}</div>
 
     <div class="container">
-        <timer class="timer"></timer>
+        <div class="timer" ng-controller="timer">{{timeToEnd | date:'HH:mm:ss'}}</div>
 
         <h1>Samsung Galaxy S6 nowy okazja licytacja</h1>
 
@@ -46,12 +46,14 @@
             <thead>
                 <tr>
                     <th>użytkownik</th>
+                    <th>cena</th>
                     <th>data</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="feed in feeds">
                     <td>{{$index + 1}}. {{feed.buyer}}</td>
+                    <td>{{feed.price | currency}}</td>
                     <td>{{feed.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                 </tr>
             </tbody>
@@ -65,6 +67,6 @@
     <script src="/scripts/app.js"></script>
     <script src="/scripts/controllers/main.js"></script>
     <script src="/scripts/controllers/bid.js"></script>
-    <script src="/scripts/directives/timer.js"></script>
+    <script src="/scripts/controllers/timer.js"></script>
 </body>
 </html>
