@@ -19,25 +19,7 @@ angular.module('bidding').controller('bid', ['$scope', '$http', function ($scope
     };
 
     $scope.bid = function () {
-        var requestParams = {
-            method: 'PATCH',
-            url: 'http://localhost:8080/api/auctions/' + $scope.auctionId,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: {
-                price: $scope.bidPrice.toFixed(2)
-            }
-        };
-
-        $http(requestParams).then(
-            function () {},
-            function (error) {
-                $scope.setMessage({status: 'error', text: error.statusText});
-                throw new Error('Bidding failed: ' + error.statusText);
-            }
-        );
-
+        //ToDo
         return false;
     };
 
