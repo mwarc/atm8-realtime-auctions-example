@@ -4,6 +4,13 @@
 
 Realtime auctions example using Websockets and Vert.x 3.
 
+Project used during the Vert.x workshop at the allegro.tech meeting conference.
+
+## Requirements
+
+- node js
+- jdk8
+
 ## How to run
 
     npm install
